@@ -1,6 +1,6 @@
 # npm-deps-security-advisories
 
-This extension analyzes npm project dependencies and displays a list of packages with security vulnerabilities, if any. This extension uses https://deps.dev/ and https://osv.dev/ api for analyze deps.
+This [extension](https://marketplace.visualstudio.com/items?itemName=NeyromANt.npm-deps-security-advisories) analyzes npm project dependencies and displays a list of packages with security vulnerabilities, if any. This extension uses https://deps.dev/ and https://osv.dev/ api for analyze deps.
 
 ## Usage
 
