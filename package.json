@@ -2,7 +2,7 @@
   "name": "npm-deps-security-advisories",
   "displayName": "npm-deps-security-advisories",
   "description": "This extension analyzes npm project dependencies and displays a list of packages with vulnerabilities, if any.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.78.0"
   },

@@ -13,13 +13,13 @@ export const parseLockFileAsync = async (workspaceDir: string, manifestFile: str
 };
 
 const fillDepsMap = (subTree: DepTreeDep, target: Map<string, Dependency>, skipAddSelf = false): void => {
-    if (!subTree.name || !subTree.version) {        
+    if (!skipAddSelf && (!subTree.name || !subTree.version)) {        
         return;
     }
 
     if (!skipAddSelf) {
         const key = `${subTree.name}@${subTree.version}`;
-        target.set(key, { name: subTree.name, version: subTree.version });
+        target.set(key, { name: subTree.name!, version: subTree.version! });
     }
 
     if (subTree.dependencies) {
