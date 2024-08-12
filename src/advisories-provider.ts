@@ -30,12 +30,12 @@ const getVulns = async (dep: Dependency, ct: vscode.CancellationToken): Promise<
 		}
 
 		const depInfo = await axios<QueryResponse>(
-			`https://api.deps.dev/v3alpha/query?versionKey.system=npm&versionKey.name=${encodeURIComponent(dep.name)}&versionKey.version=${encodeURIComponent(dep.version)}`, {
+			`https://api.deps.dev/v3/query?versionKey.system=npm&versionKey.name=${encodeURIComponent(dep.name)}&versionKey.version=${encodeURIComponent(dep.version)}`, {
 			method: 'get',
 			cancelToken: cancellationToken,
 		}
 		);
-		const advisoryKeys = depInfo.data.versions[0].advisoryKeys.map(k => k.id);
+		const advisoryKeys = depInfo.data.results[0].version.advisoryKeys.map(k => k.id);
 		var advisoriesInfo = await Promise.all(advisoryKeys.map(k => getAdvisory(k, cancellationToken)));
 		
 		const result: DepAdvisory = {
@@ -61,7 +61,7 @@ const getAdvisory = async (key: string, ct: CancelToken | undefined): Promise<Ad
 
 	try {
 		const advisoryResponse = await axios<Advisory>(
-			`https://api.deps.dev/v3alpha/advisories/${encodeURIComponent(key)}`, {
+			`https://api.deps.dev/v3/advisories/${encodeURIComponent(key)}`, {
 				method: 'get',
 				cancelToken: ct,
 			}
